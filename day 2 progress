@@ -1,0 +1,126 @@
+🚀 Day 2 of 7: Dockerizing the Application 🚀
+
+
+-> The is the continiuity of previoud blog post on Deploying2 tier app deployment on to of AWS.
+In this blog lets discuss 
+1.How to dockerize an application
+2. We are going to discuss 3 main topics 
+---> Why Docker
+---> Hands on on Docker
+---> Creating of Docker images, Docker File. How to do deployment ...all this stufss we are going to discuss here today.
+
+
+-------------------------------
+Lets discuss on code kept on Github first 
+
+2-tier Flask APP
+
+Flask: Python based micro framework, that helps in creation of webapplications. 
+         ---> generally we may see small applications with "app.py"  and generally app.py consists of logic part of application"
+
+Lets see why app.py is important in Devops engineer point ov view.
+ ----> app.py code is important as it helps devops engineer. by seeing this code devops engineer can abale to see requirement in creation of container image using docker(dockerizing the image).
+ 
+
+Lets see What is Docker ?
+
+Docker : Basically a open source tool , which help to launch OS in fraction of seconds.
+ ---> It helps to build our apps and helps to run virtually.
+
+Consider a senario a developer is working on a code where he build an application in windows and he wanats to run same app in MAC book or even Linux OS. Some time app may work , but most of time app will fails. Reason amy be due to Different OS will be having different requirements and prquirisite and Developer build code may break syatem and app may fail. to over some this we have container technology like docker, openshift, kubernetes etc.
+
+
+--> Now lets get to docker, Docker basically gives us a virtual environment. Inside this virtual environment we can add all our project requirement.
+From our project point of view  we need an OS- Ubuntu, Code , Libraries to run app , command.
+
+Docker is basically used to create containers. 
+
+
+
+To understand Docker container we need 3 things or 3 step process.
+1. We need ---> Docker file
+
+So what is docker file ?
+
+---> in this docker file we will write our requirement of our image line by line.
+Consider previous example 
+If we need an OS --->? then we are going to write that command in Docker file in 1st line
+If we want to copy Code  ---> ? then we are going to write that command in Docker file in 2nd line to copy that code
+If we need Libraries ----> then we are going to write that command in 3rd line of docker file to run libraries 
+If we need to run command and execute application we acn write it in 4th line and so on.. what ever we needed, we are going to write this in Dockerfile.
+
+
+2. By using DOcker file we can able to create image (image build). Images are build using Dockerfile and Docker images. 
+by image build we get a container.
+
+
+---> by builded image we get the container. 
+
+-----> we can able to build n number of container with the build image which we created previously.
+------> Inside Container our actual application will be running 
+
+this is the main benefit of Docker
+
+
+----------------------->>>>>>>>>>>>>Lets do some hands on <<<<<<<<<<<<<<<<<<<<<<<<-------------------
+Consider youself As a Devops engineer, first we look inside app.py file and we will find some insights and requirements that need to be added in docker file to build our own custom image. 
+
+
+1. If we see code , we got to know its basically using flask. *** SO we need flask library
+2. After few observations we see that we also see mysql is beed used by flask *** SO we also need mysql commands and libraies 
+3. Next we see some environment variable so that code can run properly , this environment variable is been used to connect MYSql.
+-----------> SO basicallly , we need to run an image with flask and we also need an run an image with mysql and then we need to connect this 2 images .
+
+----------> By seeing and reading code as a devops engineer we were able to know this kind of requirements. 
+
+4. Next we can able to see 2 function by which my sql is been used to trying to get connected . def hello (): def submit ():
+----------> this function is basically an API(APPLICATION PROGRAMMABLE INTERFACE)
+ -----------------> API takes request from client and then on serverside/database it send request and then return back with a response.
+  -----------------> API acts a waiter
+
+
+
+
+
+
+
+
+----->Client ---------------> API(Waiter) ---------------------->(CHEF) Database --------------------> respond back to API with some data
+                                                                                      
+
+
+Port is running in 5000, 
+
+--------------> as a devops aspirant now we got an Idea how devops engineer works and they gather infoo from app.py file.
+
+
+As mentioned in day 1 we need aws account to proceed to next process
+
+------------------<<<<<<<<<<<<<<<<<< AWS >>>>>>>>>>>>>>>>>>>>>>--------------------------
+
+------> everything we going to run in ubuntu OS.
+--------> IN aws we have a service called EC2. --------> Ec2 will provide us virtual servers as a rent. Pay as you us model
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
